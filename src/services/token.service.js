@@ -10,7 +10,7 @@ async function save(userId, newToken) {
   }
 
   token.refreshToken = newToken;
-  token.save();
+  await token.save();
 }
 
 function getByToken(refreshToken) {

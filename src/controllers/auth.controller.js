@@ -70,7 +70,7 @@ const login = async (req, res) => {
     throw ApiError.badRequest('Wrong password');
   }
 
-  generateTokens(res, user);
+  await generateTokens(res, user);
 };
 
 const refresh = async (req, res) => {
@@ -108,7 +108,7 @@ const resetPassword = async (req, res) => {
     throw ApiError.badRequest('No such user');
   }
 
-  authService.resetPassword(email);
+  await authService.resetPassword(email);
 };
 
 const confirmPassword = async (req, res) => {

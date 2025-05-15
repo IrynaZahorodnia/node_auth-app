@@ -56,7 +56,7 @@ async function changePassword(req, res) {
     throw ApiError.badRequest('Validation error', { error });
   }
 
-  const hashedPassword = await authService.hashPassword(password);
+  const hashedPassword = await authService.hashPassword(newPassword);
 
   user.password = hashedPassword;
   await user.save();
@@ -94,12 +94,12 @@ async function changeEmail(req, res) {
   const subject = 'Email changes';
   const html = `<p>Email in your profile has been changed to ${newEmail}</p>`;
 
-  emailService.send({ email: user.email, subject, html });
+  await emailService.send({ email: user.email, subject, html });
 
   user.email = newEmail;
   await user.save();
 
-  res.sendStatus(userService.normalize(user));
+  res.send(userService.normalize(user));
 }
 
 exports.profileController = {

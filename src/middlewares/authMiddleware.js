@@ -1,10 +1,10 @@
 const { jwtService } = require('../services/jwt.service.js');
 
 function authMiddleware(req, res, next) {
-  const autorization = req.headers['autorization'] || '';
-  const [, token] = autorization.split(' ');
+  const authorization = req.headers['authorization'] || '';
+  const [, token] = authorization.split(' ');
 
-  if (!autorization || !token) {
+  if (!authorization || !token) {
     res.sendStatus(401);
 
     return;
