@@ -1,3 +1,5 @@
+require('dotenv/config');
+
 const jsonwebtoken = require('jsonwebtoken');
 
 const SECRET = process.env.JWT_ACCESS_SECRET;
